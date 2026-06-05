@@ -45,13 +45,21 @@ export default function CTAStrong() {
               Dapatkan konsultasi gratis, penyusunan RAB transparan, dan desain awal yang sesuai dengan kebutuhan Anda. Bergabunglah dengan puluhan klien kami yang telah sukses membangun rumah idaman dari jauh secara aman.
             </p>
 
-            {/* CTA Button */}
-            <a 
-              href="https://wa.me/6285655518055" target="_blank" rel="noopener noreferrer" 
-              className="inline-block bg-[#c9a227] hover:bg-[#b08d1e] text-black font-bold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all duration-200"
-            >
-              Mulai Konsultasi Gratis
-            </a>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="https://wa.me/6285655518055" target="_blank" rel="noopener noreferrer" 
+                className="inline-flex justify-center items-center bg-[#c9a227] hover:bg-[#b08d1e] text-black font-bold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all duration-200"
+              >
+                Mulai Konsultasi Gratis
+              </a>
+              <a 
+                href="/portfolio" 
+                className="inline-flex justify-center items-center bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-bold text-sm sm:text-base px-8 py-3.5 rounded-full transition-all duration-200"
+              >
+                Lihat Portofolio Kami
+              </a>
+            </div>
           </div>
         </div>
       </section>

@@ -29,7 +29,7 @@ export default function HeroContent() {
           Konsultasi Gratis Sekarang
         </Link>
         <Link
-          href="#portfolio"
+          href="/portfolio"
           className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border-2 border-white text-white font-bold text-sm hover:bg-white hover:text-black transition-all duration-200"
         >
           Lihat Contoh Proyek

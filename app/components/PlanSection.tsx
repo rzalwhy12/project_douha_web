@@ -34,7 +34,7 @@ export default function PlanSection() {
       price: "Garansi Pekerjaan",
       priceNote: "kontrak & dokumentasi resmi",
       cta: "Lihat Portfolio Proyek",
-      ctaHref: "#portfolio",
+      ctaHref: "/portfolio",
     },
   ];
 

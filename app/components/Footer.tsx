@@ -28,7 +28,7 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="flex flex-wrap justify-center md:justify-end items-center gap-x-6 gap-y-2 mt-2">
-            <a href="#portfolio" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all">Portfolio</a>
+            <a href="/portfolio" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all">Portfolio</a>
             <span className="text-gray-700 hidden sm:inline">•</span>
             <a href="#layanan" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all">Layanan</a>
             <span className="text-gray-700 hidden sm:inline">•</span>

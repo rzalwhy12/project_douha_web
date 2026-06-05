@@ -50,6 +50,9 @@ export default function StickyHeader() {
             <Link href="#benefit" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
               Benefit
             </Link>
+            <Link href="/portfolio" className="text-[#c9a227] hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
+              Portofolio
+            </Link>
             <Link href="#testimoni" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
               Testimoni
             </Link>

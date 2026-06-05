@@ -91,7 +91,7 @@ export default function HeroSection() {
 
           {/* Card 2 */}
           <a
-            href="#portfolio"
+            href="/portfolio"
             className="flex items-center gap-4 px-6 py-5 bg-white text-gray-900 border-2 border-white rounded-sm hover:bg-gray-100 transition-colors group"
           >
             <div className="w-9 h-9 bg-black flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors">

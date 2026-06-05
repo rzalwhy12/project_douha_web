@@ -112,7 +112,7 @@ export default function GuideSection() {
               Konsultasi Gratis Sekarang
             </a>
             <a
-              href="#portfolio"
+              href="/portfolio"
               className="inline-block bg-transparent hover:bg-white/10 text-white font-semibold text-base px-8 py-3.5 rounded-full border-2 border-white/60 hover:border-white transition-all duration-200"
             >
               Lihat Portfolio Proyek

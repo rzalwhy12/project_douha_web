@@ -40,7 +40,7 @@ export default function TestimonialSection() {
               Mulai Konsultasi Gratis
             </a>
             <a 
-              href="#portfolio"
+              href="/portfolio"
               className="bg-transparent hover:bg-white/10 text-white font-semibold text-sm px-8 py-3.5 rounded-full border border-gray-500 transition-colors w-full sm:w-auto text-center"
             >
               Lihat Contoh Laporan

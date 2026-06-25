@@ -2,48 +2,46 @@ import Link from "next/link";
 
 export default function HeroContent() {
   return (
-    <div className="flex flex-col justify-center gap-6 max-w-xl">
+    <div className="flex flex-col justify-center gap-6 max-w-2xl">
       {/* Headline */}
       <h1
-        className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-[1.05] tracking-tight"
+        className="text-5xl sm:text-6xl lg:text-[72px] font-black uppercase leading-[1] tracking-tight"
         style={{ fontFamily: "var(--font-oswald), 'Impact', sans-serif" }}
       >
-        BANGUN RUMAH IMPIANMU.{" "}
-        <span className="text-red-500">DARI JAUH TANPA RIBET</span>{" "}
-        DAN TERPERCAYA.
+        BANGUN RUMAH<br/>
+        <span className="text-[#FFC107]">DARI JAUH</span>{" "}
+        TANPA RIBET
       </h1>
 
       {/* Sub-headline */}
-      <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-lg">
-        Jika Anda sedang mencari kontraktor yang bisa dipercaya dari jarak jauh,
-        Anda tidak sendirian. Itu sulit — tapi kami bisa membantu.
-      </p>
+      <div className="text-white text-base sm:text-lg leading-relaxed max-w-xl space-y-4 font-medium">
+        <p>
+          Kami membantu Anda dalam proses bangun rumah, renovasi,
+          hingga desain rumah, tanpa Anda harus selalu hadir di lokasi.
+        </p>
+        <p>
+          Semua dikerjakan dengan <strong>Sistem Pengawasan Real Time,
+          Progress Pelaporan Project Jarak Jauh berbasis Teknologi
+          serta Kontrak yang Jelas dan Aman</strong>, sehingga Anda tetap
+          merasa tenang dan bisa memantau progres dari mana saja.
+        </p>
+      </div>
 
       {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 pt-2">
+      <div className="flex flex-col sm:flex-row gap-4 pt-4">
         <Link
-          href="https://wa.me/6285655518055" target="_blank" rel="noopener noreferrer"
-          className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95"
-          style={{ boxShadow: "0 4px 18px rgba(220,38,38,0.4)" }}
+          href="https://wa.me/6285746478187" target="_blank" rel="noopener noreferrer"
+          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#E52020] hover:bg-red-700 text-white font-bold text-[17px] transition-all duration-200"
         >
-          Konsultasi Gratis Sekarang
+          Konsultasi Gratis Sekarang!
         </Link>
         <Link
           href="/portfolio"
-          className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border-2 border-white text-white font-bold text-sm hover:bg-white hover:text-black transition-all duration-200"
+          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-[#E52020] font-bold text-[17px] hover:bg-gray-100 transition-all duration-200"
         >
-          Lihat Contoh Proyek
+          Lihat Portofolio
         </Link>
       </div>
-
-      {/* Social proof / sub note */}
-      <p className="text-gray-500 text-xs sm:text-sm mt-1">
-        Berdasarkan pengalaman nyata membantu puluhan keluarga TKI & pekerja luar kota.
-        <br />
-        <span className="text-yellow-400 font-semibold">
-          ★ Klien kami dari Malaysia, Arab Saudi, Taiwan & kota besar Indonesia.
-        </span>
-      </p>
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function Footer() {
             <span><strong className="text-gray-300">Douha Konstruksi:</strong> Solusi Bangun Rumah dari Jauh Tanpa Ribet.</span>
             <span><strong className="text-gray-300">Lokasi Kantor:</strong> Jalan Metropol megah no 04, Sumbergempol, Tulungagung</span>
             <span><strong className="text-gray-300">Area layanan:</strong> Tulungagung – Kediri – Blitar – Trenggalek (diluar kota tersebut konsultasi GRATIS)</span>
-            <span><strong className="text-gray-300">WhatsApp:</strong> +62 856-5551-8055</span>
+            <span><strong className="text-gray-300">WhatsApp:</strong> 085746478187</span>
             <span><strong className="text-gray-300">Email:</strong> douhakonstrulsi@gmail.com</span>
           </div>
 
@@ -32,7 +32,7 @@ export default function Footer() {
             <span className="text-gray-700 hidden sm:inline">•</span>
             <a href="#layanan" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all">Layanan</a>
             <span className="text-gray-700 hidden sm:inline">•</span>
-            <a href="https://wa.me/6285655518055" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all" target="_blank" rel="noopener noreferrer">Kontak</a>
+            <a href="https://wa.me/6285746478187" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all" target="_blank" rel="noopener noreferrer">Kontak</a>
           </div>
 
         </div>

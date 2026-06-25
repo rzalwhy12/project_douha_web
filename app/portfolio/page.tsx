@@ -36,7 +36,7 @@ export default async function PortfolioPage() {
 
           {/* CTA */}
           <Link
-            href="https://wa.me/6285655518055"
+            href="https://wa.me/6285746478187"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-shrink-0 inline-block bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-all hover:scale-105 whitespace-nowrap"

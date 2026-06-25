@@ -49,7 +49,7 @@ export default function FailureSection() {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a 
-              href="https://wa.me/6285655518055" target="_blank" rel="noopener noreferrer"
+              href="https://wa.me/6285746478187" target="_blank" rel="noopener noreferrer"
               className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-8 py-3.5 rounded-full transition-colors w-full sm:w-auto text-center"
             >
               Cegah Risiko Ini Sekarang

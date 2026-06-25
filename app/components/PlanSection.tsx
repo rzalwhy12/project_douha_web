@@ -10,7 +10,7 @@ export default function PlanSection() {
       price: "Gratis Konsultasi Pertama",
       priceNote: "mulai dari Rp 2,5 juta / m²",
       cta: "Mulai Konsultasi Gratis",
-      ctaHref: "https://wa.me/6285655518055",
+      ctaHref: "https://wa.me/6285746478187",
     },
     {
       number: "02",

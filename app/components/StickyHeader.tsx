@@ -61,7 +61,7 @@ export default function StickyHeader() {
           {/* CTA for sticky header */}
           <div className="flex-shrink-0">
             <Link
-              href="https://wa.me/6285655518055" target="_blank" rel="noopener noreferrer"
+              href="https://wa.me/6285746478187" target="_blank" rel="noopener noreferrer"
               className="inline-block bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 whitespace-nowrap"
             >
               Konsultasi Gratis

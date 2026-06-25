@@ -2,7 +2,6 @@ import AnnouncementBar from "./components/AnnouncementBar";
 import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
 import GuideSection from "./components/GuideSection";
-import PlanSection from "./components/PlanSection";
 import CTAStrong from "./components/CTAStrong";
 import SuccessSection from "./components/SuccessSection";
 import FailureSection from "./components/FailureSection";
@@ -18,7 +17,6 @@ export default function Home() {
       <HeroSection />
       <ProblemSection />
       <GuideSection />
-      <PlanSection />
       <CTAStrong />
       <SuccessSection />
       <FailureSection />

@@ -5,7 +5,7 @@ export default function AnnouncementBar() {
         Bangun Rumah Impian Anda Dari Jauh — Konsultasi Pertama Gratis, Daftar Sekarang!
       </span>
       <a
-        href="https://wa.me/6285655518055" target="_blank" rel="noopener noreferrer"
+        href="https://wa.me/6285746478187" target="_blank" rel="noopener noreferrer"
         className="inline-block bg-black/40 hover:bg-black/60 text-white text-xs font-bold px-4 py-1.5 rounded-full border border-white/30 transition-colors whitespace-nowrap"
       >
         Mulai Konsultasi →

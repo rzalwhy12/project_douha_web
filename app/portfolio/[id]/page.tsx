@@ -60,7 +60,7 @@ export default async function PortfolioDetailPage(props: { params: Promise<{ id:
               </div>
               <div className="mt-10 pt-8 border-t border-white/10">
                 <a 
-                  href="https://wa.me/6285655518055" target="_blank" rel="noopener noreferrer" 
+                  href="https://wa.me/6285746478187" target="_blank" rel="noopener noreferrer" 
                   className="inline-flex justify-center items-center w-full bg-[#c9a227] hover:bg-[#b08d1e] text-black font-bold text-base px-8 py-4 rounded-full transition-all duration-200"
                 >
                   Konsultasi Proyek Serupa

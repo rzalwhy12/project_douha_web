@@ -6,6 +6,7 @@ import CTAStrong from "./components/CTAStrong";
 import SuccessSection from "./components/SuccessSection";
 import FailureSection from "./components/FailureSection";
 import TestimonialSection from "./components/TestimonialSection";
+import HomePortfolioSection from "./components/HomePortfolioSection";
 import Footer from "./components/Footer";
 import StickyHeader from "./components/StickyHeader";
 
@@ -20,6 +21,7 @@ export default function Home() {
       <CTAStrong />
       <SuccessSection />
       <FailureSection />
+      <HomePortfolioSection />
       <TestimonialSection />
       <Footer />
     </div>

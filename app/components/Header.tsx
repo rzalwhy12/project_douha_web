@@ -7,24 +7,24 @@ export default function Header() {
 
         {/* Logo */}
         <div className="flex-shrink-0">
-          <div className="inline-flex items-center">
+          <Link href="/" className="inline-flex items-center">
             <img
               src="/logo/DOUHA KONSTRUKSI putih.png"
               alt="Douha Konstruksi"
-              className="h-32 sm:h-38 w-auto object-contain"
+              className="h-32 sm:h-38 w-auto object-contain hover:opacity-90 transition-opacity"
             />
-          </div>
+          </Link>
         </div>
 
         {/* Navigation */}
         <nav className="hidden lg:flex items-center gap-4 text-base font-bold ml-auto">
-          <Link href="#bangun-rumah" className="text-white hover:text-gray-300 transition-all px-4 py-2 rounded-lg whitespace-nowrap">
+          <Link href="/bangun-rumah" className="text-white hover:text-gray-300 transition-all px-4 py-2 rounded-lg whitespace-nowrap">
             Bangun Rumah
           </Link>
-          <Link href="#renovasi" className="text-white hover:text-gray-300 transition-all px-4 py-2 rounded-lg whitespace-nowrap">
+          <Link href="/renovasi" className="text-white hover:text-gray-300 transition-all px-4 py-2 rounded-lg whitespace-nowrap">
             Renovasi
           </Link>
-          <Link href="#design-rumah" className="text-white hover:text-gray-300 transition-all px-4 py-2 rounded-lg whitespace-nowrap">
+          <Link href="/desain-rumah" className="text-white hover:text-gray-300 transition-all px-4 py-2 rounded-lg whitespace-nowrap">
             Design Rumah
           </Link>
         </nav>

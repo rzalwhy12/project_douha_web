@@ -29,7 +29,7 @@ export default function FailureSection() {
           {/* Subtitle */}
           <p className="text-gray-400 text-lg md:text-xl mb-16 max-w-3xl mx-auto leading-relaxed">
             Anda berisiko mengalami hal-hal di bawah ini. <br/>
-            Dan itu sering terjadi… <strong className="text-white">terutama pada klien yang tinggal jauh.</strong>
+            Dan itu sering terjadi… <strong className="text-white">terutama pada klien yang sibuk dan kerja di luar negeri.</strong>
           </p>
 
           {/* Risks Grid (Using the dark card style from the reference) */}

@@ -2,44 +2,56 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black py-16 border-t border-gray-900">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-12">
+    <footer className="bg-[#113B7A] py-12 md:py-16 text-white border-t border-white/10 font-sans">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex flex-col md:flex-row justify-between gap-12 md:gap-8">
         
-        {/* Left Side: Logo */}
-        <div className="shrink-0 flex items-center justify-center md:justify-start w-full md:w-auto mb-6 md:mb-0">
+        {/* Left/Main Column: Text content */}
+        <div className="flex flex-col gap-8 flex-grow">
+          
+          <div>
+            <h4 className="font-bold mb-1 text-base md:text-lg">Head Office :</h4>
+            <p className="text-gray-200 text-sm md:text-base">
+              Jalan Metropol Megah no 04 , Sumbergempol , Tulungagung , 66291 Jawa Timur
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-1 text-base md:text-lg">Contact :</h4>
+            <p className="text-gray-200 text-sm md:text-base flex flex-col">
+              <span>0857 – 4647 – 8187 (whatsapp)</span>
+              <span>Email : douhakonstruksi@gmail.com</span>
+              <span>Instagram : douha.konstruksi</span>
+              <span>Facebook : Douha Konstruksi</span>
+              <span>Tiktok : douha konstruksi</span>
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-1 text-base md:text-lg">Area Layanan :</h4>
+            <p className="text-gray-200 text-sm md:text-base">
+              Tulungagung . Kediri . Blitar . Trenggalek (diluar hal area tsb hubungi contact)
+            </p>
+          </div>
+
+        </div>
+        
+        {/* Right Side: Logo & Navigation */}
+        <div className="shrink-0 flex flex-col items-start md:items-end w-full md:w-auto gap-6 md:border-l md:border-white/20 md:pl-10">
           <img 
             src="/logo/DOUHA KONSTRUKSI putih.png" 
             alt="Douha Konstruksi Logo" 
-            className="w-32 md:w-40 object-contain"
+            className="w-40 md:w-48 object-contain"
           />
-        </div>
-
-        {/* Right Side: Horizontal Info & Links */}
-        <div className="flex flex-col items-center md:items-end w-full gap-5">
-          
-          {/* Info Text (Horizontal / Menyamping) */}
-          <div className="flex flex-wrap justify-center md:justify-end items-center gap-x-6 gap-y-2 text-[11px] sm:text-xs text-gray-400 text-center md:text-right">
-            <span><strong className="text-gray-300">Douha Konstruksi:</strong> Solusi Bangun Rumah dari Jauh Tanpa Ribet.</span>
-            <span><strong className="text-gray-300">Lokasi Kantor:</strong> Jalan Metropol megah no 04, Sumbergempol, Tulungagung</span>
-            <span><strong className="text-gray-300">Area layanan:</strong> Tulungagung – Kediri – Blitar – Trenggalek (diluar kota tersebut konsultasi GRATIS)</span>
-            <span><strong className="text-gray-300">WhatsApp:</strong> 085746478187</span>
-            <span><strong className="text-gray-300">Email:</strong> douhakonstrulsi@gmail.com</span>
+          <div className="flex flex-col items-start md:items-end gap-3 mt-4">
+            <a href="/portfolio" className="font-bold tracking-wide hover:text-[#FFB800] transition-colors">Portfolio</a>
+            <a href="/#layanan" className="font-bold tracking-wide hover:text-[#FFB800] transition-colors">Layanan</a>
+            <a href="https://wa.me/6285746478187" className="font-bold tracking-wide hover:text-[#FFB800] transition-colors" target="_blank" rel="noopener noreferrer">Kontak</a>
           </div>
-
-          {/* Navigation Links */}
-          <div className="flex flex-wrap justify-center md:justify-end items-center gap-x-6 gap-y-2 mt-2">
-            <a href="/portfolio" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all">Portfolio</a>
-            <span className="text-gray-700 hidden sm:inline">•</span>
-            <a href="#layanan" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all">Layanan</a>
-            <span className="text-gray-700 hidden sm:inline">•</span>
-            <a href="https://wa.me/6285746478187" className="text-white font-bold text-sm tracking-wide hover:underline underline-offset-4 transition-all" target="_blank" rel="noopener noreferrer">Kontak</a>
-          </div>
-
         </div>
       </div>
 
       {/* Bottom Copyright Text */}
-      <div className="mt-16 text-center flex flex-col gap-1 items-center justify-center text-[10px] sm:text-xs text-gray-600">
+      <div className="mt-16 pt-6 border-t border-white/20 text-center flex flex-col gap-1 items-center justify-center text-xs text-gray-300 px-6">
         <p>Copyright © {currentYear} Douha Konstruksi. All rights reserved.</p>
       </div>
     </footer>

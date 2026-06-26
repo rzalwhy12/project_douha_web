@@ -4,40 +4,59 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 const videos = [
-  "/foto-video/IMG_2273.mp4",
-  "/foto-video/IMG_2272.mp4",
-  "/foto-video/IMG_2107.mp4",
+  "/testimoni/ADS MBAK DWI (MARET) (1).mp4",
+  "/testimoni/ANDROMEDA GIANTAMA (1).mp4",
+  "/testimoni/DOUHA KONSTRUKSI (MBAK KHULUT) (1).mp4",
+  "/testimoni/MBAK SOVIA KETANON TULUNGAGUNG (1).mp4",
+  "/testimoni/PAK SUGENG (1).mp4",
+  "/testimoni/snaptik_7573184715692199189_v3.mp4"
 ];
 
 const writtenTestimonialsLeft = [
   {
-    text: "Pengerjaan sangat rapi dan sesuai dengan target waktu. Tim lapangan komunikatif dan profesional dalam mengatasi kendala.",
-    name: "Universitas Negeri Malang",
-    logo: "/logo/Lambang-UM.webp"
+    text: "Telah merencanakan pembangunan rumah sejak setahun lalu. Karena sibuk bekerja dan tidak bisa memantau langsung, saya sempat khawatir. Namun sangat puas dengan Douha Konstruksi karena konsultasi mudah, progres selalu diupdate, dan desain selesai cepat sesuai ekspektasi.",
+    name: "Dwi Sulistyoningsih",
+    city: "Tulungagung (Desa Rejoagung)"
   },
   {
-    text: "Sangat puas dengan kualitas bangunannya. Laporan harian sangat detail sehingga kami yang di luar kota tetap bisa mengontrol.",
-    name: "PT. Mega Tuff",
-    logo: "/logo/LOGO-Mega-Tuff-Polycarbonate.webp"
+    text: "Untuk klinik gigi, saya ingin konsep hangat bernuansa terracotta. Memilih Douha karena fast response dan portofolio sangat rapi. Selain mengutamakan keinginan pelanggan, harganya paling terjangkau dibanding penyedia jasa lain. Sangat puas!",
+    name: "drg. Berlian Giantama",
+    city: "Tulungagung"
+  },
+  {
+    text: "Khawatir merenovasi rumah karena akan tinggal di Taiwan. Lewat TikTok saya menemukan Douha Konstruksi. Sangat terbantu dengan kemudahan berdiskusi dan merevisi desain secara langsung, sehingga konsep matang sebelum saya berangkat.",
+    name: "Khulut Vitaloka",
+    city: "Tulungagung (Kec. Rejotangan / Kalidawir)"
   }
 ];
 
 const writtenTestimonialsRight = [
   {
-    text: "RAB sangat transparan tanpa biaya tersembunyi. Semua kesepakatan dijalankan dengan baik, highly recommended!",
-    name: "Shera Group",
-    logo: "/logo/LOGO-Shera.webp"
+    text: "Sangat terbantu layanan Douha Konstruksi yang memudahkan komunikasi jarak jauh (Korea - Tulungagung). Update progres lancar berkat koordinasi baik, respons cepat, serta bantuan keluarga di rumah. Rumah impian terwujud tanpa kendala.",
+    name: "Anang Sugiarto",
+    city: "Tulungagung (Bekerja di Korea)"
   },
   {
-    text: "Desain dan hasil jadinya sangat presisi. Sebagai pekerja migran, saya merasa sangat aman menitipkan proyek ke tim ini.",
-    name: "Klien Personal (TKI)",
-    logo: "/icon konsultasi.png" // Placeholder logo
+    text: "Sebagai perantau yang tidak bisa memantau proyek setiap hari, kami sangat terbantu transparansi Douha Konstruksi. Lewat dokumentasi harian, kami bisa mengoreksi langsung bagian yang kurang sesuai. Rumah pertama selesai dengan baik.",
+    name: "Sovia & Suami",
+    city: "Ketanon, Tulungagung"
+  },
+  {
+    text: "Mewakili anak yang membangun dari jauh, saya sangat puas dengan kualitas pengerjaan. Segala perencanaan dieksekusi dengan baik. Pembangunan lancar, tidak ribet, dan selalu mengerjakan setiap permintaan dengan penuh tanggung jawab.",
+    name: "Pak Sugeng",
+    city: "Kediri"
   }
 ];
 
 export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsMuted(!isMuted);
+  };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % videos.length);
@@ -75,11 +94,12 @@ export default function TestimonialSection() {
             {writtenTestimonialsLeft.map((item, i) => (
               <div key={i} className="bg-gray-50 rounded-2xl p-6 text-left border border-gray-100 shadow-sm relative">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-full p-2 shadow-sm border border-gray-100">
-                    <Image src={item.logo} alt={item.name} fill className="object-contain p-1 rounded-full" />
+                  <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-full shadow-sm border border-gray-100 flex items-center justify-center font-bold text-[#113B7A] text-xl">
+                    {item.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#113B7A]">{item.name}</h4>
+                    <h4 className="font-bold text-[#113B7A] leading-tight">{item.name}</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">{item.city}</p>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed italic">
@@ -89,24 +109,19 @@ export default function TestimonialSection() {
             ))}
           </div>
 
-          {/* Center - iPhone Frame Container */}
-          <div className="relative flex-shrink-0 w-[320px] h-[650px] bg-black rounded-[45px] border-[10px] border-gray-900 shadow-2xl overflow-hidden ring-4 ring-gray-200">
+          {/* Center Column - Video Player & Controls */}
+          <div className="flex flex-col items-center gap-6">
+            {/* iPhone Frame Container */}
+            <div className="relative flex-shrink-0 w-[320px] h-[650px] bg-black rounded-[45px] border-[10px] border-gray-900 shadow-2xl overflow-hidden ring-4 ring-gray-200">
             <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 w-[120px] mx-auto rounded-b-[16px] z-30" />
             <video 
               ref={videoRef}
+              key={currentIndex}
               src={videos[currentIndex]} 
               className="absolute inset-0 w-full h-full object-cover" 
-              autoPlay loop muted playsInline 
+              autoPlay loop muted={isMuted} playsInline 
             />
             <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-black/60 to-transparent z-10" />
-            
-            <div className="absolute top-8 inset-x-3 flex gap-1.5 z-20">
-              {videos.map((_, i) => (
-                <div key={i} className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
-                  <div className={`h-full bg-white transition-all duration-300 ${i === currentIndex ? 'w-full' : i < currentIndex ? 'w-full' : 'w-0'}`} />
-                </div>
-              ))}
-            </div>
 
             <div className="absolute top-12 left-4 z-20 flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gray-500 overflow-hidden flex items-center justify-center border-2 border-white">
@@ -125,23 +140,74 @@ export default function TestimonialSection() {
               <div className="w-1/2 h-full cursor-pointer" onClick={handleNext} aria-label="Video Selanjutnya" />
             </div>
 
-            <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/70 to-transparent z-10 flex flex-col justify-end p-6 text-white text-left pointer-events-none">
-              <p className="font-medium text-sm leading-snug drop-shadow-md">
-                "Hasilnya sangat memuaskan, dibangun tepat waktu. Terima kasih Douha!"
+            {/* Mute/Unmute Button */}
+            <button 
+              onClick={toggleMute}
+              className="absolute bottom-6 right-6 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-black/70 transition-colors"
+            >
+              {isMuted ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="23" y1="9" x2="17" y2="15"></line>
+                  <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+              )}
+            </button>
+
+            <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 flex flex-col justify-end p-6 pr-20 text-white text-left pointer-events-none">
+              <p className="font-medium text-xs sm:text-sm leading-relaxed drop-shadow-md line-clamp-4">
+                "{[...writtenTestimonialsLeft, ...writtenTestimonialsRight][currentIndex].text}"
               </p>
             </div>
           </div>
+
+          {/* Navigation Controls Below iPhone Frame */}
+          <div className="flex flex-col items-center gap-4 w-[320px]">
+            {/* Progress Bars */}
+            <div className="flex gap-2 w-full px-2">
+              {videos.map((_, i) => (
+                <div key={i} className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden cursor-pointer" onClick={() => setCurrentIndex(i)}>
+                  <div className={`h-full bg-[#113B7A] transition-all duration-300 ${i === currentIndex ? 'w-full' : i < currentIndex ? 'w-full' : 'w-0'}`} />
+                </div>
+              ))}
+            </div>
+
+            {/* Prev/Next Buttons Row */}
+            <div className="flex justify-between items-center w-full px-2">
+              <button 
+                onClick={handlePrev}
+                className="flex items-center gap-2 text-[#113B7A] hover:text-[#FFB800] font-bold text-sm md:text-base transition-colors bg-white shadow-sm border border-gray-100 px-4 py-2 rounded-full"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                Sebelumnya
+              </button>
+              <button 
+                onClick={handleNext}
+                className="flex items-center gap-2 text-[#113B7A] hover:text-[#FFB800] font-bold text-sm md:text-base transition-colors bg-white shadow-sm border border-gray-100 px-4 py-2 rounded-full"
+              >
+                Selanjutnya
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+        </div>
 
           {/* Right Column - Written Testimonials */}
           <div className="flex-1 space-y-6 hidden lg:flex lg:flex-col">
             {writtenTestimonialsRight.map((item, i) => (
               <div key={i} className="bg-gray-50 rounded-2xl p-6 text-left border border-gray-100 shadow-sm relative">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-full p-2 shadow-sm border border-gray-100">
-                    <Image src={item.logo} alt={item.name} fill className="object-contain p-1 rounded-full" />
+                  <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-full shadow-sm border border-gray-100 flex items-center justify-center font-bold text-[#113B7A] text-xl">
+                    {item.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#113B7A]">{item.name}</h4>
+                    <h4 className="font-bold text-[#113B7A] leading-tight">{item.name}</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">{item.city}</p>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed italic">
@@ -156,11 +222,12 @@ export default function TestimonialSection() {
             {[...writtenTestimonialsLeft, ...writtenTestimonialsRight].map((item, i) => (
               <div key={i} className="bg-gray-50 rounded-2xl p-6 text-left border border-gray-100 shadow-sm relative">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-full p-2 shadow-sm border border-gray-100">
-                    <Image src={item.logo} alt={item.name} fill className="object-contain p-1 rounded-full" />
+                  <div className="relative w-12 h-12 flex-shrink-0 bg-white rounded-full shadow-sm border border-gray-100 flex items-center justify-center font-bold text-[#113B7A] text-xl">
+                    {item.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#113B7A]">{item.name}</h4>
+                    <h4 className="font-bold text-[#113B7A] leading-tight">{item.name}</h4>
+                    <p className="text-xs text-gray-500 mt-0.5">{item.city}</p>
                   </div>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed italic">

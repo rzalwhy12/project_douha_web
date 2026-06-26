@@ -34,8 +34,11 @@ export default function HeroSection() {
           <div className="relative h-12 sm:h-16 w-28 sm:w-36 opacity-70 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300">
             <Image src="/logo/LOGO-Mega-Tuff-Polycarbonate.webp" alt="Mega Tuff" fill className="object-contain" />
           </div>
-          <div className="relative h-12 sm:h-16 w-28 sm:w-36 opacity-70 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300">
-            <Image src="/logo/Lambang-UM.webp" alt="UM" fill className="object-contain" />
+          <div className="relative h-12 sm:h-16 w-28 sm:w-36 opacity-70 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 flex flex-col items-center justify-center">
+            <div className="relative w-full h-full">
+              <Image src="/logo/Lambang-UM.webp" alt="UM" fill className="object-contain" />
+            </div>
+            <span className="absolute -bottom-3 text-[10px] md:text-xs font-bold text-[#113B7A] whitespace-nowrap">Mitra PKL</span>
           </div>
           <div className="relative h-12 sm:h-16 w-28 sm:w-36 opacity-70 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300">
             <Image src="/logo/DID2019014748.jpg" alt="Partner Logo" fill className="object-contain" />

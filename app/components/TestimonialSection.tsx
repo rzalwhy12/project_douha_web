@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 
 const videos = [
   "/testimoni/ADS MBAK DWI (MARET) (1).mp4",
@@ -10,6 +9,15 @@ const videos = [
   "/testimoni/MBAK SOVIA KETANON TULUNGAGUNG (1).mp4",
   "/testimoni/PAK SUGENG (1).mp4",
   "/testimoni/snaptik_7573184715692199189_v3.mp4"
+];
+
+const videoClients = [
+  { name: "Dwi Sulistyoningsih", city: "Rejoagung, Tulungagung" },
+  { name: "drg. Berlian Giantama", city: "Tulungagung" },
+  { name: "Khulut Vitaloka", city: "Rejotangan, Tulungagung" },
+  { name: "Sovia & Suami", city: "Ketanon, Tulungagung" },
+  { name: "Pak Sugeng", city: "Kediri" },
+  { name: "Anang Sugiarto", city: "Tulungagung" },
 ];
 
 const writtenTestimonialsLeft = [
@@ -51,7 +59,36 @@ const writtenTestimonialsRight = [
 export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // IntersectionObserver: hanya autoplay saat section terlihat di viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+        if (!entry.isIntersecting && videoRef.current) {
+          videoRef.current.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Play/pause berdasarkan visibility
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (isVisible) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    } else {
+      videoRef.current.pause();
+    }
+  }, [currentIndex, isVisible]);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -59,22 +96,17 @@ export default function TestimonialSection() {
   };
 
   const handleNext = () => {
+    setIsLoading(true);
     setCurrentIndex((prev) => (prev + 1) % videos.length);
   };
 
   const handlePrev = () => {
+    setIsLoading(true);
     setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   };
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
-    }
-  }, [currentIndex]);
-
   return (
-    <section id="testimoni" className="bg-white py-20 md:py-28">
+    <section ref={sectionRef} id="testimoni" className="bg-white py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center">
         
         <h2 
@@ -114,12 +146,26 @@ export default function TestimonialSection() {
             {/* iPhone Frame Container */}
             <div className="relative flex-shrink-0 w-[320px] h-[650px] bg-black rounded-[45px] border-[10px] border-gray-900 shadow-2xl overflow-hidden ring-4 ring-gray-200">
             <div className="absolute top-0 inset-x-0 h-6 bg-gray-900 w-[120px] mx-auto rounded-b-[16px] z-30" />
-            <video 
+
+            {/* Loading Spinner */}
+            {isLoading && (
+              <div className="absolute inset-0 z-40 flex items-center justify-center bg-black/60">
+                <div className="w-12 h-12 rounded-full border-4 border-white/20 border-t-white animate-spin" />
+              </div>
+            )}
+
+            {/* Hanya render video yang aktif (lazy load) */}
+            <video
               ref={videoRef}
               key={currentIndex}
-              src={videos[currentIndex]} 
-              className="absolute inset-0 w-full h-full object-cover" 
-              autoPlay loop muted={isMuted} playsInline 
+              src={videos[currentIndex]}
+              className="absolute inset-0 w-full h-full object-cover"
+              preload="metadata"
+              loop
+              muted={isMuted}
+              playsInline
+              onCanPlay={() => setIsLoading(false)}
+              onWaiting={() => setIsLoading(true)}
             />
             <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-black/60 to-transparent z-10" />
 
@@ -130,8 +176,8 @@ export default function TestimonialSection() {
                 </svg>
               </div>
               <div className="text-left text-white drop-shadow-md">
-                <p className="font-bold text-sm leading-tight">Testimoni Klien</p>
-                <p className="text-xs opacity-90">Douha Konstruksi</p>
+                <p className="font-bold text-sm leading-tight">{videoClients[currentIndex].name}</p>
+                <p className="text-xs opacity-90">{videoClients[currentIndex].city}</p>
               </div>
             </div>
 

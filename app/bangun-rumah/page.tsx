@@ -22,8 +22,8 @@ export default function BangunRumah() {
           {/* Top Half: Hero Image */}
           <div className="relative h-[400px] md:h-[500px] w-full">
             <Image 
-              src="/bg.png" 
-              alt="Renovasi Rumah" 
+              src="/lantai1.JPG" 
+              alt="Bangun Rumah 1 Lantai" 
               fill 
               className="object-cover object-center"
             />
@@ -110,7 +110,7 @@ export default function BangunRumah() {
           {/* Top Half: Hero Image */}
           <div className="relative h-[400px] md:h-[500px] w-full">
             <Image 
-              src="/bg.png" 
+              src="/lantai2.JPG" 
               alt="Bangun Rumah 2 Lantai" 
               fill 
               className="object-cover object-center"

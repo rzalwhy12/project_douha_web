@@ -35,7 +35,7 @@ export default function Renovasi() {
           {/* Top Half: Hero Image */}
           <div className="relative h-[400px] md:h-[500px] w-full">
             <Image 
-              src="/bg.png" 
+              src="/kontruksi.JPG" 
               alt="Renovasi Rumah" 
               fill 
               className="object-cover object-center"

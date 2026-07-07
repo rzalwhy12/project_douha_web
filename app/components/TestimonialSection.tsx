@@ -3,12 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 
 const videos = [
-  "/testimoni/ADS MBAK DWI (MARET) (1).mp4",
-  "/testimoni/ANDROMEDA GIANTAMA (1).mp4",
-  "/testimoni/DOUHA KONSTRUKSI (MBAK KHULUT) (1).mp4",
-  "/testimoni/MBAK SOVIA KETANON TULUNGAGUNG (1).mp4",
-  "/testimoni/PAK SUGENG (1).mp4",
-  "/testimoni/snaptik_7573184715692199189_v3.mp4"
+  "https://backendlessappcontent.com/B19F51F1-260E-4E0F-9441-99C1FC08FCA0/80E839A6-433C-46EC-BF7D-1C1598A913EC/files/testimoni/ADS_MBAK_DWI__MARET___1_.mp4",
+  "https://backendlessappcontent.com/B19F51F1-260E-4E0F-9441-99C1FC08FCA0/80E839A6-433C-46EC-BF7D-1C1598A913EC/files/testimoni/ANDROMEDA_GIANTAMA__1_.mp4",
+  "https://backendlessappcontent.com/B19F51F1-260E-4E0F-9441-99C1FC08FCA0/80E839A6-433C-46EC-BF7D-1C1598A913EC/files/testimoni/DOUHA_KONSTRUKSI__MBAK_KHULUT___1_.mp4",
+  "https://backendlessappcontent.com/B19F51F1-260E-4E0F-9441-99C1FC08FCA0/80E839A6-433C-46EC-BF7D-1C1598A913EC/files/testimoni/MBAK_SOVIA_KETANON_TULUNGAGUNG__1_.mp4",
+  "https://backendlessappcontent.com/B19F51F1-260E-4E0F-9441-99C1FC08FCA0/80E839A6-433C-46EC-BF7D-1C1598A913EC/files/testimoni/PAK_SUGENG__1_.mp4",
+  "https://backendlessappcontent.com/B19F51F1-260E-4E0F-9441-99C1FC08FCA0/80E839A6-433C-46EC-BF7D-1C1598A913EC/files/testimoni/snaptik_7573184715692199189_v3.mp4",
 ];
 
 const videoClients = [

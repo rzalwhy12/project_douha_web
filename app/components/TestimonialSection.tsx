@@ -63,6 +63,12 @@ export default function TestimonialSection() {
   const [isVisible, setIsVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  // Ref untuk hidden video preloader (next & prev)
+  const preloadRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  // Indeks video yang perlu di-preload (next & prev)
+  const nextIndex = (currentIndex + 1) % videos.length;
+  const prevIndex = (currentIndex - 1 + videos.length) % videos.length;
 
   // IntersectionObserver: hanya autoplay saat section terlihat di viewport
   useEffect(() => {
@@ -154,18 +160,38 @@ export default function TestimonialSection() {
               </div>
             )}
 
-            {/* Hanya render video yang aktif (lazy load) */}
+            {/* Video aktif — preload="auto" agar buffer penuh */}
             <video
               ref={videoRef}
               key={currentIndex}
               src={videos[currentIndex]}
               className="absolute inset-0 w-full h-full object-cover"
-              preload="metadata"
+              preload="auto"
               loop
               muted={isMuted}
               playsInline
               onCanPlay={() => setIsLoading(false)}
               onWaiting={() => setIsLoading(true)}
+            />
+
+            {/* Hidden preloader: buffer video berikutnya & sebelumnya di background */}
+            <video
+              key={`pre-next-${nextIndex}`}
+              src={videos[nextIndex]}
+              preload="auto"
+              muted
+              playsInline
+              className="hidden"
+              ref={(el) => { preloadRefs.current[0] = el; }}
+            />
+            <video
+              key={`pre-prev-${prevIndex}`}
+              src={videos[prevIndex]}
+              preload="auto"
+              muted
+              playsInline
+              className="hidden"
+              ref={(el) => { preloadRefs.current[1] = el; }}
             />
             <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-black/60 to-transparent z-10" />
 

@@ -61,16 +61,22 @@ export default function TestimonialSection() {
   const [isMuted, setIsMuted] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [needsTap, setNeedsTap] = useState(false); // fallback tap-to-play mobile
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  // Ref untuk hidden video preloader (next & prev)
   const preloadRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Indeks video yang perlu di-preload (next & prev)
   const nextIndex = (currentIndex + 1) % videos.length;
   const prevIndex = (currentIndex - 1 + videos.length) % videos.length;
 
-  // IntersectionObserver: hanya autoplay saat section terlihat di viewport
+  // Paksa set muted via DOM (fix React bug dengan muted attribute)
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+    }
+  }, [currentIndex]);
+
+  // IntersectionObserver — threshold 0.1 agar mobile lebih mudah trigger
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -79,35 +85,55 @@ export default function TestimonialSection() {
           videoRef.current.pause();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // Play/pause berdasarkan visibility
+  // Play saat visible — paksa muted via DOM sebelum play() untuk mobile
   useEffect(() => {
-    if (!videoRef.current) return;
-    if (isVisible) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
-    } else {
-      videoRef.current.pause();
+    const video = videoRef.current;
+    if (!video || !isVisible) return;
+
+    video.muted = true; // WAJIB sebelum play() di mobile
+    video.currentTime = 0;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => setNeedsTap(false))
+        .catch(() => {
+          // Autoplay diblokir browser (umum di mobile) — tampilkan tombol play
+          setNeedsTap(true);
+          setIsLoading(false);
+        });
     }
   }, [currentIndex, isVisible]);
 
+  const handleTapToPlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().then(() => setNeedsTap(false)).catch(() => {});
+  };
+
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsMuted(!isMuted);
+    const newMuted = !isMuted;
+    setIsMuted(newMuted);
+    if (videoRef.current) videoRef.current.muted = newMuted;
   };
 
   const handleNext = () => {
     setIsLoading(true);
+    setNeedsTap(false);
     setCurrentIndex((prev) => (prev + 1) % videos.length);
   };
 
   const handlePrev = () => {
     setIsLoading(true);
+    setNeedsTap(false);
     setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   };
 
@@ -160,21 +186,22 @@ export default function TestimonialSection() {
               </div>
             )}
 
-            {/* Video aktif — preload="auto" agar buffer penuh */}
+            {/* Video aktif — autoPlay + muted wajib untuk mobile */}
             <video
               ref={videoRef}
               key={currentIndex}
               src={videos[currentIndex]}
               className="absolute inset-0 w-full h-full object-cover"
               preload="auto"
+              autoPlay
               loop
-              muted={isMuted}
+              muted
               playsInline
               onCanPlay={() => setIsLoading(false)}
               onWaiting={() => setIsLoading(true)}
             />
 
-            {/* Hidden preloader: buffer video berikutnya & sebelumnya di background */}
+            {/* Hidden preloader next video */}
             <video
               key={`pre-next-${nextIndex}`}
               src={videos[nextIndex]}
@@ -184,15 +211,21 @@ export default function TestimonialSection() {
               className="hidden"
               ref={(el) => { preloadRefs.current[0] = el; }}
             />
-            <video
-              key={`pre-prev-${prevIndex}`}
-              src={videos[prevIndex]}
-              preload="auto"
-              muted
-              playsInline
-              className="hidden"
-              ref={(el) => { preloadRefs.current[1] = el; }}
-            />
+
+            {/* Tap to Play overlay — muncul jika autoplay diblokir mobile */}
+            {needsTap && (
+              <div
+                className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/50 cursor-pointer"
+                onClick={handleTapToPlay}
+              >
+                <div className="w-16 h-16 rounded-full bg-white/20 border-2 border-white flex items-center justify-center mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                </div>
+                <p className="text-white text-sm font-bold">Tap untuk memutar</p>
+              </div>
+            )}
             <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-black/60 to-transparent z-10" />
 
             <div className="absolute top-12 left-4 z-20 flex items-center gap-3">

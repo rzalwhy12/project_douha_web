@@ -23,9 +23,9 @@ export default function GuideSection() {
         {/* Paragraphs */}
         <div className="text-white text-base sm:text-xl md:text-[22px] leading-snug font-medium mb-12 text-left sm:text-center space-y-6 w-full">
           <p>
-            Kami memahami betapa beratnya membangun rumah dari jauh.<br className="hidden sm:block"/>
-            Klien kami banyak yang bekerja sebagai <strong className="font-bold">TKI, pegawai sibuk,</strong><br className="hidden sm:block"/>
-            <strong className="font-bold">dan pengusaha</strong>, mereka tidak punya waktu untuk mengurus<br className="hidden sm:block"/>
+            Kami memahami betapa beratnya membangun rumah dari jauh.<br className="hidden sm:block" />
+            Klien kami banyak yang bekerja sebagai <strong className="font-bold">TKI, pegawai sibuk,</strong><br className="hidden sm:block" />
+            <strong className="font-bold">dan pengusaha</strong>, mereka tidak punya waktu untuk mengurus <br className="hidden sm:block" />
             detail kecil pembangunan.
           </p>
           <p>

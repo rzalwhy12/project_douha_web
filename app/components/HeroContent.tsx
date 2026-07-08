@@ -8,7 +8,7 @@ export default function HeroContent() {
         className="text-5xl sm:text-6xl lg:text-[72px] font-black uppercase leading-[1] tracking-tight"
         style={{ fontFamily: "var(--font-oswald), 'Impact', sans-serif" }}
       >
-        BANGUN RUMAH<br/>
+        BANGUN RUMAH<br />
         <span className="text-[#FFC107]">DARI JAUH</span>{" "}
         TANPA RIBET
       </h1>
@@ -16,13 +16,13 @@ export default function HeroContent() {
       {/* Sub-headline */}
       <div className="text-white text-base sm:text-lg leading-relaxed max-w-xl space-y-4 font-medium">
         <p>
-          Kami membantu Anda dalam proses bangun rumah, renovasi,
+          Douha Konstruksi membantu Anda dalam proses bangun rumah, renovasi,
           hingga desain rumah, tanpa Anda harus selalu hadir di lokasi.
         </p>
         <p>
           Semua dikerjakan dengan <strong>Sistem Pengawasan Real Time,
-          Progress Pelaporan Project Jarak Jauh berbasis Teknologi
-          serta Kontrak yang Jelas dan Aman</strong>, sehingga Anda tetap
+            Progress Pelaporan Project Jarak Jauh berbasis Teknologi
+            serta Kontrak yang Jelas dan Aman</strong>, sehingga Anda tetap
           merasa tenang dan bisa memantau progres dari mana saja.
         </p>
       </div>

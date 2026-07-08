@@ -6,7 +6,7 @@ export default function ProblemSection() {
       <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
         {/* Headline */}
         <h2 className="text-3xl sm:text-4xl md:text-[40px] font-black uppercase leading-tight mb-12 text-[#113B7A]" style={{ fontFamily: "var(--font-oswald), 'Impact', sans-serif" }}>
-          KAMI TAHU APA YANG SERING<br className="hidden sm:block" />
+          KAMI TAHU APA YANG SERING <br className="hidden sm:block" />
           MEMBUAT ORANG TAKUT BANGUN RUMAH:
         </h2>
 
@@ -17,7 +17,7 @@ export default function ProblemSection() {
             <div className="flex items-start gap-3">
               <IconX />
               <p className="text-[#113B7A] text-base sm:text-lg leading-snug">
-                Kontraktor atau tukang<br/>
+                Kontraktor atau tukang<br />
                 yang <strong className="font-bold">sulit dipercaya</strong>
               </p>
             </div>
@@ -34,14 +34,14 @@ export default function ProblemSection() {
             <div className="flex items-start gap-3">
               <IconX />
               <p className="text-[#113B7A] text-base sm:text-lg leading-snug">
-                Hasil akhirnya<br/>
+                Hasil akhirnya<br />
                 <strong className="font-bold">tidak sesuai janji</strong>
               </p>
             </div>
             <div className="flex items-start gap-3">
               <IconX />
               <p className="text-[#113B7A] text-base sm:text-lg leading-snug">
-                Harus <strong className="font-bold">bolak-balik</strong><br/>
+                Harus <strong className="font-bold">bolak-balik</strong><br />
                 pulang mengawasi
               </p>
             </div>

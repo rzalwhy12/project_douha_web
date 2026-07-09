@@ -44,7 +44,7 @@ export default function Footer() {
           />
           <div className="flex flex-col items-start md:items-end gap-3 mt-4">
             <a href="/portfolio" className="font-bold tracking-wide hover:text-[#FFB800] transition-colors">Portfolio</a>
-            <a href="/#layanan" className="font-bold tracking-wide hover:text-[#FFB800] transition-colors">Layanan</a>
+            <a href="/bangun-rumah" className="font-bold tracking-wide hover:text-[#FFB800] transition-colors">Layanan</a>
             <a href="https://wa.me/6285746478187" className="font-bold tracking-wide hover:text-[#FFB800] transition-colors" target="_blank" rel="noopener noreferrer">Kontak</a>
           </div>
         </div>

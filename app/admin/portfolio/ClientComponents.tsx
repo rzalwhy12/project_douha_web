@@ -6,27 +6,30 @@ import { saveProject, deleteProject, updateProject } from "../../actions/portfol
 import { UploadCloud, Trash2, PlusCircle, CheckCircle, Pencil, X } from "lucide-react";
 import type { Project } from "../../actions/portfolio";
 
-const APP_ID = process.env.NEXT_PUBLIC_BACKENDLESS_APP_ID;
-const API_KEY = process.env.NEXT_PUBLIC_BACKENDLESS_API_KEY;
-const BACKENDLESS_BASE = `https://api.backendless.com/${APP_ID}/${API_KEY}`;
+import { createClient } from "@supabase/supabase-js";
 
-// Upload file langsung dari browser ke Backendless
-async function uploadFileToBackendless(file: File): Promise<string> {
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
+);
+
+// Upload file langsung dari browser ke Supabase Storage
+async function uploadFileToSupabase(file: File): Promise<string> {
   const filename = `${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
-  const uploadUrl = `${BACKENDLESS_BASE}/files/portfolio/${filename}?overwrite=true`;
 
-  const fd = new FormData();
-  fd.append("file", file);
+  const { data, error } = await supabase.storage
+    .from("portfolio")
+    .upload(filename, file, { upsert: true });
 
-  const res = await fetch(uploadUrl, { method: "POST", body: fd });
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Gagal upload "${file.name}": ${errText}`);
+  if (error) {
+    throw new Error(`Gagal upload "${file.name}": ${error.message}`);
   }
 
-  const data = await res.json();
-  if (!data.fileURL) throw new Error(`URL tidak ditemukan: ${JSON.stringify(data)}`);
-  return data.fileURL;
+  const { data: urlData } = supabase.storage
+    .from("portfolio")
+    .getPublicUrl(data.path);
+
+  return urlData.publicUrl;
 }
 
 // ─── CREATE FORM ─────────────────────────────────────────────────────────────
@@ -59,7 +62,7 @@ export function CreatePortfolioForm() {
       const uploadedUrls: string[] = [];
       for (let i = 0; i < files.length; i++) {
         setProgress(`Mengunggah foto ${i + 1} dari ${files.length}...`);
-        uploadedUrls.push(await uploadFileToBackendless(files[i]));
+        uploadedUrls.push(await uploadFileToSupabase(files[i]));
       }
       setProgress("Menyimpan data ke database...");
       const result = await saveProject({ title, description, images: uploadedUrls });
@@ -159,7 +162,7 @@ export function EditPortfolioModal({ project, onClose }: { project: Project; onC
       let finalImages = [...existingImages];
       for (let i = 0; i < newFiles.length; i++) {
         setProgress(`Mengunggah foto baru ${i + 1} dari ${newFiles.length}...`);
-        finalImages.push(await uploadFileToBackendless(newFiles[i]));
+        finalImages.push(await uploadFileToSupabase(newFiles[i]));
       }
 
       setProgress("Menyimpan perubahan...");

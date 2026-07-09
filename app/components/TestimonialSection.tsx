@@ -69,10 +69,10 @@ export default function TestimonialSection() {
   const nextIndex = (currentIndex + 1) % videos.length;
   const prevIndex = (currentIndex - 1 + videos.length) % videos.length;
 
-  // Paksa set muted via DOM (fix React bug dengan muted attribute)
+  // Paksa set muted via DOM sesuai state
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = true;
+      videoRef.current.muted = isMuted;
     }
   }, [currentIndex]);
 
@@ -91,12 +91,12 @@ export default function TestimonialSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Play saat visible — paksa muted via DOM sebelum play() untuk mobile
+  // Play saat visible
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !isVisible) return;
 
-    video.muted = true; // WAJIB sebelum play() di mobile
+    video.muted = isMuted; // Gunakan state isMuted saat ini
     video.currentTime = 0;
 
     const playPromise = video.play();
@@ -104,12 +104,23 @@ export default function TestimonialSection() {
       playPromise
         .then(() => setNeedsTap(false))
         .catch(() => {
-          // Autoplay diblokir browser (umum di mobile) — tampilkan tombol play
-          setNeedsTap(true);
-          setIsLoading(false);
+          // Autoplay diblokir browser (umum di mobile jika unmuted)
+          // Jika unmuted, coba fallback ke muted dulu
+          if (!isMuted) {
+            video.muted = true;
+            setIsMuted(true);
+            video.play().catch(() => {
+              setNeedsTap(true);
+              setIsLoading(false);
+            });
+          } else {
+            setNeedsTap(true);
+            setIsLoading(false);
+          }
         });
     }
-  }, [currentIndex, isVisible]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex, isVisible]); // Jangan masukkan isMuted ke deps agar video tidak restart saat di-unmute
 
   const handleTapToPlay = () => {
     const video = videoRef.current;

@@ -95,6 +95,7 @@ export async function saveProject({
 
     revalidatePath("/admin/portfolio");
     revalidatePath("/portfolio");
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error("saveProject Error:", error);
@@ -129,6 +130,7 @@ export async function updateProject(
     revalidatePath("/admin/portfolio");
     revalidatePath("/portfolio");
     revalidatePath(`/portfolio/${objectId}`);
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error("updateProject Error:", error);
@@ -163,6 +165,7 @@ export async function deleteProject(objectId: string, images: string[]) {
 
     revalidatePath("/admin/portfolio");
     revalidatePath("/portfolio");
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.error("Delete Project Error:", error);

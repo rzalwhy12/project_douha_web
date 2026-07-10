@@ -3,6 +3,7 @@ import StickyHeader from "../../components/StickyHeader";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ImageGallery from "../../components/ImageGallery";
 
 export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -70,38 +71,8 @@ export default async function PortfolioDetailPage(props: { params: Promise<{ id:
           </div>
 
           {/* Galeri Foto */}
-          <div className="w-full lg:w-2/3 order-1 lg:order-2 space-y-6">
-            {project.images && project.images.length > 0 ? (
-              <>
-                {/* Foto Pertama (Paling Besar) */}
-                <div className="w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative group">
-                  <img 
-                    src={project.images[0]} 
-                    alt={`${project.title} - Foto Utama`} 
-                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                
-                {/* Sisa Foto */}
-                {project.images.length > 1 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    {project.images.slice(1).map((img, idx) => (
-                      <div key={idx} className="w-full rounded-xl overflow-hidden border border-white/10 shadow-lg relative group h-64 md:h-80">
-                        <img 
-                          src={img} 
-                          alt={`${project.title} - Foto ${idx + 2}`} 
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-12 text-center">
-                <p className="text-gray-400">Belum ada foto untuk proyek ini.</p>
-              </div>
-            )}
+          <div className="w-full lg:w-2/3 order-1 lg:order-2">
+            <ImageGallery images={project.images || []} title={project.title} />
           </div>
         </div>
       </section>

@@ -43,9 +43,9 @@ export default async function HomePortfolioSection() {
                 <div className="h-64 relative overflow-hidden">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
                   {project.images?.[0] ? (
-                    <img 
-                      src={project.images[0]} 
-                      alt={project.title} 
+                    <img
+                      src={project.images[0]}
+                      alt={project.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                     />
                   ) : (

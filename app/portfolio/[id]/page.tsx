@@ -28,7 +28,7 @@ export default async function PortfolioDetailPage(props: { params: Promise<{ id:
   return (
     <div className="min-h-screen bg-black text-white">
       <StickyHeader />
-      
+
       {/* Header Section */}
       <section className="relative pt-32 pb-16 px-6 md:px-12 flex flex-col items-center justify-center border-b border-white/10">
         <div className="absolute inset-0 bg-black"></div>
@@ -60,8 +60,8 @@ export default async function PortfolioDetailPage(props: { params: Promise<{ id:
                 {project.description}
               </div>
               <div className="mt-10 pt-8 border-t border-white/10">
-                <a 
-                  href="https://wa.me/6285746478187" target="_blank" rel="noopener noreferrer" 
+                <a
+                  href="https://wa.me/6285746478187" target="_blank" rel="noopener noreferrer"
                   className="inline-flex justify-center items-center w-full bg-[#c9a227] hover:bg-[#b08d1e] text-black font-bold text-base px-8 py-4 rounded-full transition-all duration-200"
                 >
                   Konsultasi Proyek Serupa

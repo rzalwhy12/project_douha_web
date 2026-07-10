@@ -27,10 +27,10 @@ export default async function PortfolioPage() {
 
           {/* Nav Links */}
           <div className="hidden md:flex items-center gap-1 text-sm font-semibold">
-            <Link href="/#masalah" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Masalah</Link>
-            <Link href="/#kelebihan" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Kelebihan</Link>
-            <Link href="/#layanan" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Layanan</Link>
-            <Link href="/#testimoni" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Testimoni</Link>
+            <Link href="/" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Home</Link>
+            <Link href="/bangun-rumah" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Bangun Rumah</Link>
+            <Link href="/renovasi" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Renovasi</Link>
+            <Link href="/desain-rumah" className="text-gray-300 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Desain Rumah</Link>
             <Link href="/portfolio" className="text-[#c9a227] font-bold px-4 py-2 hover:bg-white/5 rounded-lg whitespace-nowrap">Portofolio</Link>
           </div>
 
@@ -75,9 +75,9 @@ export default async function PortfolioPage() {
                 <div className="h-64 relative overflow-hidden">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
                   {project.images?.[0] ? (
-                    <img 
-                      src={project.images[0]} 
-                      alt={project.title} 
+                    <img
+                      src={project.images[0]}
+                      alt={project.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                     />
                   ) : (

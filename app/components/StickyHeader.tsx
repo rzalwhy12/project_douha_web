@@ -20,11 +20,11 @@ export default function StickyHeader() {
 
   return (
     <div className="fixed top-0 left-0 w-full h-4 z-[9999] group">
-      
+
       {/* The hidden navbar that drops down on hover */}
       <div className="absolute top-0 left-0 w-full bg-black/95 backdrop-blur-md border-b border-white/10 shadow-2xl transform -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-6">
-          
+
           {/* Logo for sticky header */}
           <div className="flex-shrink-0">
             <Link href="/" className="hover:opacity-90 transition-opacity">
@@ -38,6 +38,9 @@ export default function StickyHeader() {
 
           {/* Navigation for sticky header */}
           <nav className="hidden lg:flex items-center gap-1 text-sm font-semibold ml-auto">
+            <Link href="/" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
+              Home
+            </Link>
             <Link href="/bangun-rumah" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
               Bangun Rumah
             </Link>
@@ -47,23 +50,8 @@ export default function StickyHeader() {
             <Link href="/desain-rumah" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
               Design Rumah
             </Link>
-            <Link href="/#masalah" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
-              Masalah
-            </Link>
-            <Link href="/#kelebihan" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
-              Kelebihan
-            </Link>
-            <Link href="/#layanan" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
-              Layanan
-            </Link>
-            <Link href="/#benefit" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
-              Benefit
-            </Link>
-            <Link href="/portfolio" className="text-[#c9a227] hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
+            <Link href="/portfolio" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
               Portofolio
-            </Link>
-            <Link href="/#testimoni" className="text-gray-300 hover:text-white transition-all px-4 py-2 whitespace-nowrap hover:bg-white/5 rounded-lg">
-              Testimoni
             </Link>
           </nav>
 
